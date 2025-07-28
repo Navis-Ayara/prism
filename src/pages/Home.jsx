@@ -1,10 +1,11 @@
-import { ArrowDownToLine, ArrowUpFromLine, Sparkles } from "lucide-react";
+import { ArrowDownToLine, ArrowUpFromLine, Sparkles, Pyramid } from "lucide-react";
 
 function Home() {
     return (
         <div className="w-full bg-[#090a0d]">
             <div className="w-full h-screen flex flex-col">
-                <div className="flex gap-2.5 p-5">
+                <div className="flex gap-2.5 p-5 items-center">
+                    <Pyramid size={32} strokeWidth={2.5} color="white" />
                     <span className="text-white text-3xl font-semibold">Prism</span>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-16 items-center h-full py-8 px-20">
@@ -47,7 +48,7 @@ function Home() {
                     </p>
                 </div>
                 <div className="flex-1 h-72 rounded-xl border-2 border-accent-foreground flex flex-col gap-3.5 items-center justify-center p-4">
-                    <div className="p-3.5 bg-gray-900 rounded-2xl bg-opacity-70">
+                    <div className="p-3.5 bg-blue-900/30 rounded-2xl">
                         <Sparkles size={52} className="text-blue-800"/>
                     </div>
                     <p className="text-2xl font-semibold text-white">
