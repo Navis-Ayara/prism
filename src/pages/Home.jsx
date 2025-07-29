@@ -1,6 +1,8 @@
 import { ArrowDownToLine, ArrowUpFromLine, Sparkles, Pyramid } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react"
 import { useState } from "react";
+import WishListDialog from "@/components/landing_page/WishListDialog";
+import { Button } from "@/components/ui/button";
 
 function Home() {
     const [isDialogOpen, updateIsDialogOpen] = useState(false)
@@ -9,14 +11,13 @@ function Home() {
             <AnimatePresence>
                 {isDialogOpen && (
                     <motion.div 
-                        className="absolute z-40 w-full h-screen bg-black/30 flex items-center justify-between"
+                        className="absolute z-40 w-full h-screen bg-black/80 flex items-center justify-center"
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}
                         transition={{duration: 0.2}}
-                        onClick={() => updateIsDialogOpen(!isDialogOpen)}
                     >
-                    
+                        <WishListDialog onExit={() => updateIsDialogOpen(!isDialogOpen)}/>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -33,12 +34,12 @@ function Home() {
                         <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
                           AI-powered UI/UX guidance that aligns with your brand and vision—without hiring a designer
                         </p>
-                        <button 
+                        <Button 
                             onClick={() => updateIsDialogOpen(!isDialogOpen)}
-                            className="bg-[#413f9a] text-white px-8 py-4 rounded-lg font-semibold text-lg cursor-pointer"
+                            className="bg-[#413f9a] text-white px-8 py-4 rounded-lg font-semibold text-lg cursor-pointer h-16"
                         >
                           Join Early Access
-                        </button>
+                        </Button>
                     </div>
                     <div className=""> {/* preview of the interface */}
 
