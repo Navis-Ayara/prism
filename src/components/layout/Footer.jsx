@@ -5,10 +5,10 @@ function Footer() {
     return (
         <footer className="border-t border-gray-800 px-20 py-12">
             <div className="flex justify-between items-start">
-                <div className="flex gap-2 items-center">
+                <Link to="/" className="flex gap-2 items-center">
                     <Pyramid size={24} strokeWidth={2.5} color="white" />
                     <span className="text-white text-xl font-semibold">Prism</span>
-                </div>
+                </Link>
                 <div className="flex gap-12">
                     <div className="flex flex-col gap-3">
                         <h3 className="text-white font-semibold">Product</h3>
