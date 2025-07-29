@@ -1,8 +1,25 @@
 import { ArrowDownToLine, ArrowUpFromLine, Sparkles, Pyramid } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react"
+import { useState } from "react";
 
 function Home() {
+    const [isDialogOpen, updateIsDialogOpen] = useState(false)
     return (
-        <div className="w-full bg-[#090a0d]">
+        <div className={`w-full bg-[#090a0d] z-10 h-screen ${isDialogOpen ? "overflow-hidden" : "overflow-auto"}`}>
+            <AnimatePresence>
+                {isDialogOpen && (
+                    <motion.div 
+                        className="absolute z-40 w-full h-screen bg-black/30 flex items-center justify-between"
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}
+                        transition={{duration: 0.2}}
+                        onClick={() => updateIsDialogOpen(!isDialogOpen)}
+                    >
+                    
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <div className="w-full h-screen flex flex-col">
                 <div className="flex gap-2.5 p-5 items-center">
                     <Pyramid size={32} strokeWidth={2.5} color="white" />
@@ -16,11 +33,14 @@ function Home() {
                         <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
                           AI-powered UI/UX guidance that aligns with your brand and vision—without hiring a designer
                         </p>
-                        <button className="bg-[#413f9a] text-white px-8 py-4 rounded-lg font-semibold text-lg cursor-pointer">
+                        <button 
+                            onClick={() => updateIsDialogOpen(!isDialogOpen)}
+                            className="bg-[#413f9a] text-white px-8 py-4 rounded-lg font-semibold text-lg cursor-pointer"
+                        >
                           Join Early Access
                         </button>
                     </div>
-                    <div className="">
+                    <div className=""> {/* preview of the interface */}
 
                     </div>
                 </div>
@@ -36,7 +56,7 @@ function Home() {
                 </div>
             </div>
             <div className="flex px-20 py-10 gap-5">
-                <div className="flex-1 h-72 rounded-xl border-2 border-accent-foreground flex flex-col gap-3.5 items-center justify-center p-4">
+                <div className="flex-1 h-72 rounded-xl border-2 border-gray-800 flex flex-col gap-3.5 items-center justify-center p-4">
                     <div className="p-3.5 bg-gray-900 rounded-2xl bg-opacity-70">
                         <ArrowUpFromLine color="white" size={52} className=""/>
                     </div>
@@ -47,7 +67,7 @@ function Home() {
                         Upload an existing design or create a new one with AI
                     </p>
                 </div>
-                <div className="flex-1 h-72 rounded-xl border-2 border-accent-foreground flex flex-col gap-3.5 items-center justify-center p-4">
+                <div className="flex-1 h-72 rounded-xl border-2 border-gray-800 flex flex-col gap-3.5 items-center justify-center p-4">
                     <div className="p-3.5 bg-blue-900/30 rounded-2xl">
                         <Sparkles size={52} className="text-blue-800"/>
                     </div>
@@ -58,7 +78,7 @@ function Home() {
                         Get instant feedback on branding adherence and UX improvements
                     </p>
                 </div>
-                <div className="flex-1 h-72 rounded-xl border-2 border-accent-foreground flex flex-col gap-3.5 items-center justify-center p-4">
+                <div className="flex-1 h-72 rounded-xl border-2 border-gray-800 flex flex-col gap-3.5 items-center justify-center p-4">
                     <div className="p-3.5 bg-gray-900 rounded-2xl bg-opacity-70">
                         <ArrowDownToLine  color="white" size={52} className=""/>
                     </div>
@@ -70,6 +90,39 @@ function Home() {
                     </p>
                 </div>
             </div>
+            <footer className="border-t border-gray-800 px-20 py-12">
+                <div className="flex justify-between items-start">
+                    <div className="flex gap-2 items-center">
+                        <Pyramid size={24} strokeWidth={2.5} color="white" />
+                        <span className="text-white text-xl font-semibold">Prism</span>
+                    </div>
+                    <div className="flex gap-12">
+                        <div className="flex flex-col gap-3">
+                            <h3 className="text-white font-semibold">Product</h3>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Features</a>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Pricing</a>
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <h3 className="text-white font-semibold">Company</h3>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors">About</a>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a>
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <h3 className="text-white font-semibold">Support</h3>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Status</a>
+                        </div>
+                    </div>
+                </div>
+                <div className="border-t border-gray-800 mt-8 pt-8 flex justify-between items-center text-gray-400 text-sm">
+                    <p>&copy; 2025 Prism. All rights reserved.</p>
+                    {/* <div className="flex gap-6">
+                        <a href="#" className="hover:text-white transition-colors">Privacy</a>
+                        <a href="#" className="hover:text-white transition-colors">Terms</a>
+                        <a href="#" className="hover:text-white transition-colors">Cookies</a>
+                    </div> */}
+                </div>
+            </footer>
         </div>
     )
 }
