@@ -1,17 +1,30 @@
 import { ArrowDownToLine, ArrowUpFromLine, Sparkles, Pyramid } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WishListDialog from "@/components/landing_page/WishListDialog";
 import { Button } from "@/components/ui/button";
 
 function Home() {
     const [isDialogOpen, updateIsDialogOpen] = useState(false)
+
+    useEffect(() => {
+        if (isDialogOpen) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = "auto"
+        }
+
+        return () => {
+            document.body.style.overflow = "auto"
+        }
+    }, [isDialogOpen])
+
     return (
-        <div className={`w-full ${isDialogOpen ? "overflow-hidden" : "overflow-auto"}`}>
+        <div className={`w-full overflow-auto`}>
             <AnimatePresence>
                 {isDialogOpen && (
                     <motion.div 
-                        className="absolute z-40 w-full h-screen bg-black/80 flex items-center justify-center"
+                        className="fixed top-0 left-0 z-40 w-full h-full bg-black/80 flex items-center justify-center"
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}
