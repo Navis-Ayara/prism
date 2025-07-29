@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 function Home() {
     const [isDialogOpen, updateIsDialogOpen] = useState(false)
     return (
-        <div className={`w-full bg-[#090a0d] z-10 h-screen ${isDialogOpen ? "overflow-hidden" : "overflow-auto"}`}>
+        <div className={`w-full ${isDialogOpen ? "overflow-hidden" : "overflow-auto"}`}>
             <AnimatePresence>
                 {isDialogOpen && (
                     <motion.div 
@@ -21,11 +21,7 @@ function Home() {
                     </motion.div>
                 )}
             </AnimatePresence>
-            <div className="w-full h-screen flex flex-col">
-                <div className="flex gap-2.5 p-5 items-center">
-                    <Pyramid size={32} strokeWidth={2.5} color="white" />
-                    <span className="text-white text-3xl font-semibold">Prism</span>
-                </div>
+            <div className="w-full flex flex-col">
                 <div className="grid lg:grid-cols-2 gap-16 items-center h-full py-8 px-20">
                     <div className="text-6xl lg:text-7xl font-semibold leading-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                         <h1>
@@ -91,39 +87,6 @@ function Home() {
                     </p>
                 </div>
             </div>
-            <footer className="border-t border-gray-800 px-20 py-12">
-                <div className="flex justify-between items-start">
-                    <div className="flex gap-2 items-center">
-                        <Pyramid size={24} strokeWidth={2.5} color="white" />
-                        <span className="text-white text-xl font-semibold">Prism</span>
-                    </div>
-                    <div className="flex gap-12">
-                        <div className="flex flex-col gap-3">
-                            <h3 className="text-white font-semibold">Product</h3>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Features</a>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Pricing</a>
-                        </div>
-                        <div className="flex flex-col gap-3">
-                            <h3 className="text-white font-semibold">Company</h3>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors">About</a>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a>
-                        </div>
-                        <div className="flex flex-col gap-3">
-                            <h3 className="text-white font-semibold">Support</h3>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Status</a>
-                        </div>
-                    </div>
-                </div>
-                <div className="border-t border-gray-800 mt-8 pt-8 flex justify-between items-center text-gray-400 text-sm">
-                    <p>&copy; 2025 Prism. All rights reserved.</p>
-                    {/* <div className="flex gap-6">
-                        <a href="#" className="hover:text-white transition-colors">Privacy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms</a>
-                        <a href="#" className="hover:text-white transition-colors">Cookies</a>
-                    </div> */}
-                </div>
-            </footer>
         </div>
     )
 }
