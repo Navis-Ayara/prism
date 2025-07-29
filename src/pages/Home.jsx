@@ -1,5 +1,6 @@
 import { ArrowDownToLine, ArrowUpFromLine, Sparkles, Pyramid } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react"
+import { Link } from "react-router";
 import { useState } from "react";
 import WishListDialog from "@/components/landing_page/WishListDialog";
 import { Button } from "@/components/ui/button";
@@ -100,7 +101,7 @@ function Home() {
                     <div className="flex gap-12">
                         <div className="flex flex-col gap-3">
                             <h3 className="text-white font-semibold">Product</h3>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Features</a>
+                            <Link to="/features" className="text-gray-400 hover:text-white transition-colors">Features</Link>
                             <a href="#" className="text-gray-400 hover:text-white transition-colors">Pricing</a>
                         </div>
                         <div className="flex flex-col gap-3">
